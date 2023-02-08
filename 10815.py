@@ -2,13 +2,25 @@ N = int(input())
 A = list(map(int, input().split()))
 M = int(input())
 B = list(map(int, input().split()))
-numlist = [0]*20000000
+A.sort()
 
-for a in A:
-    numlist[a+10000000] += 1
+
+def findCard(b):
+    down, up = 0, len(A)-1
+    while (down <= up):
+        mid = (down+up) // 2
+
+        if A[mid] > b:
+            up = mid - 1
+        elif A[mid] < b:
+            down = mid + 1
+        else:
+            return mid
+    return None
+
 
 for b in B:
-    if numlist[b+10000000] == 1:
+    if findCard(b) is not None:
         print(1, end=" ")
     else:
         print(0, end=" ")
