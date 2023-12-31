@@ -11,7 +11,11 @@ n = int(input())
 for _ in range(n):
     msg = input().split(' ')
     for i in msg:
-        for j in reversed(i):
-            print(j, end='')
-        print(' ', end="")
+        i = list(i)
+        while(1):
+            if (len(i) == 0):
+                break
+            else:
+                print(i.pop(), end='')
+        print(' ', end='')
     print()
